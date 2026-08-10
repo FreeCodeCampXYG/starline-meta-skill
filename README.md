@@ -2,7 +2,7 @@
 
 > 把一句「把这个流程做成 Skill」，变成一个真正能被发现、能稳定触发、能通过验证、还能一键开源的 Skill。
 
-当前 `v3.0.0` 是本地 Starline 迁移版本，尚未声明对应的公开 GitHub 仓库或 Release。
+当前公开仓库为 [`FreeCodeCampXYG/starline-meta-skill`](https://github.com/FreeCodeCampXYG/starline-meta-skill)。`v3.0.1` 补齐 Windows 下 `npx.cmd`、UTF-8 命令输出与隔离用户目录安装验证。
 
 安装以后，你只需要把提示词、SOP、聊天记录、旧 Skill、脚本或一个模糊想法交给 Agent：
 
@@ -13,7 +13,7 @@
 
 它会自己完成：**需求收敛 → 同类检索 → 取长避短 → Skill 设计 → 触发评测 → 格式校验 → README → API 泄露检查 → PR → Release → npx 安装验证**。
 
-**v3.0.0 本地迁移：** 技术名、目录名、显示名、默认署名和命名策略已统一为 Starline；公开发布证据仍为 `missing evidence`。
+**v3.0.1 Windows 发布修复：** 发布器现在能在 Windows 上正确解析 `npx.cmd`、读取 GitHub CLI 的 UTF-8 输出，并在临时用户目录完成干净安装验证。
 
 ### 命名体系
 

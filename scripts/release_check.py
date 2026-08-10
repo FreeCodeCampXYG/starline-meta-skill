@@ -47,6 +47,8 @@ def run(command: list[str], cwd: Path, timeout: float = 120.0, env: dict[str, st
             cwd=cwd,
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             check=False,
             timeout=timeout,
             env=env,
@@ -235,8 +237,16 @@ def evaluate(root: Path, phase: str, run_tests: bool, install_check: bool) -> di
 
             env = dict(os.environ)
             env["HOME"] = str(temp_home)
+            env["USERPROFILE"] = str(temp_home)
+            drive, tail = os.path.splitdrive(str(temp_home))
+            if drive:
+                env["HOMEDRIVE"] = drive
+                env["HOMEPATH"] = tail
             install = run(
-                ["npx", "--yes", "skills", "add", slug, "--skill", name, "--yes"],
+                [
+                    "npx", "--yes", "skills", "add", slug,
+                    "--skill", name, "--agent", "codex", "--global", "--copy", "--yes",
+                ],
                 temp_home,
                 timeout=300,
                 env=env,
