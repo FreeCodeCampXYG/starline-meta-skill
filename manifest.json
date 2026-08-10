@@ -1,0 +1,88 @@
+{
+  "name": "starline-meta-skill",
+  "version": "3.0.0",
+  "owner": "Starline",
+  "updated_at": "2026-08-04",
+  "status": "active",
+  "maturity_tier": "governed",
+  "lifecycle_stage": "library",
+  "context_budget_tier": "production",
+  "review_cadence": "quarterly",
+  "upstream_inspiration": "https://github.com/yaojingang/yao-meta-skill; https://github.com/joeseesun/qiaomu-skill-publisher",
+  "upstream_sync": {
+    "reviewed_commit": "e15472e1f5dc96f79ea0259bf9fdf67598cea356",
+    "reviewed_at": "2026-07-31",
+    "reviewed_through_commit_date": "2026-07-16",
+    "policy": "semantic adoption; do not mirror upstream wholesale"
+  },
+  "starline_defaults": {
+    "skill_name_prefix": "starline-",
+    "max_preferred_hyphen_parts": 3,
+    "copyright": "Copyright (c) Starline"
+  },
+  "naming": {
+    "default_prefix": "starline-",
+    "max_preferred_hyphen_parts": 3,
+    "allow_user_prefix_override": true,
+    "allow_no_prefix": true,
+    "preserve_existing_name_on_update": true,
+    "rename_existing_only_when_explicitly_requested": true
+  },
+  "target_platforms": [
+    "openai",
+    "claude",
+    "generic",
+    "agent-skills-compatible",
+    "vscode"
+  ],
+  "factory_components": [
+    "references",
+    "scripts",
+    "evals",
+    "reports"
+  ],
+  "skill_os_2_layers": [
+    "intent",
+    "skill_ir",
+    "package",
+    "eval",
+    "review",
+    "operate"
+  ],
+  "release_gates": [
+    "prior_art_research",
+    "built_in_prior_art_discovery",
+    "dual_catalog_discovery",
+    "cross_catalog_deduplication",
+    "resilient_catalog_fetch",
+    "unified_prior_art_runner",
+    "creation_handoff",
+    "advantage_evidence_labels",
+    "canonical_creator_authority",
+    "generalization_gate",
+    "action_boundary",
+    "root_entrypoint_isolation",
+    "validate_skill",
+    "version_report_consistency",
+    "context_budget_validation",
+    "export_skill_ir",
+    "trigger_eval",
+    "readme_product_page",
+    "install_verification",
+    "release_readiness_audit",
+    "remote_version_check",
+    "secret_scan",
+    "blind_review_integrity",
+    "evidence_bound_public_claims",
+    "self_contained_skill_publisher",
+    "mit_license_preparation",
+    "repository_skill_name_separation",
+    "feature_branch_only_publication",
+    "pull_request_review_and_check_gate",
+    "released_version_immutability",
+    "github_release_creation",
+    "npx_discovery_and_clean_install",
+    "non_destructive_local_sync",
+    "codex_skill_history_catalog"
+  ]
+}
