@@ -26,6 +26,7 @@ from typing import Any, Callable
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT_DIR = PACKAGE_ROOT / "scripts"
 DEFAULT_BRANCHES = {"main", "master"}
+MERGE_STRATEGY = "--rebase"
 
 
 def load_module(name: str, path: Path) -> Any:
@@ -154,6 +155,11 @@ def github_user(root: Path, explicit: str | None, origin_owner: str | None, runn
     if not result.stdout:
         raise PublishError("unable to resolve GitHub user")
     return result.stdout.strip()
+
+
+def commit_identity(owner: str, github_owner: str) -> tuple[str, str]:
+    """Return the repository-local public commit identity."""
+    return owner, f"{github_owner}@users.noreply.github.com"
 
 
 def ensure_license(root: Path, owner: str, *, write: bool) -> list[str]:
@@ -482,6 +488,10 @@ def publish(args: argparse.Namespace, runner: Runner = run) -> dict[str, Any]:
         runner(["git", "clone", f"https://github.com/{slug}.git", str(workspace)], source)
         copy_package(source, workspace)
 
+    commit_name, commit_email = commit_identity(meta["owner"], owner)
+    runner(["git", "config", "user.name", commit_name], workspace)
+    runner(["git", "config", "user.email", commit_email], workspace)
+
     default = default_branch(workspace, slug, runner)
     current_result = runner(["git", "branch", "--show-current"], workspace, check=False)
     current = current_result.stdout.strip() if current_result.ok else ""
@@ -570,10 +580,8 @@ def publish(args: argparse.Namespace, runner: Runner = run) -> dict[str, Any]:
             pr_url,
             "--repo",
             slug,
-            "--squash",
+            MERGE_STRATEGY,
             "--delete-branch",
-            "--subject",
-            f"release: {meta['name']} v{meta['version']}",
         ],
         workspace,
     )
