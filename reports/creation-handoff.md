@@ -2,9 +2,9 @@
 
 ## Result
 
-- Skill: `starline-meta-skill` 3.0.1
+- Skill: `starline-meta-skill` 3.0.2
 - Job: research, create, evaluate, package, govern, and safely publish reusable Starline skills through one self-contained workflow
-- Status: public repository and v3.0.0 release created; v3.0.1 adds Windows-safe command resolution, UTF-8 subprocess decoding, and isolated clean-install verification
+- Status: public v3.0.0 and v3.0.1 releases created; v3.0.2 enforces the Starline public commit identity and completes Windows-safe isolated installation verification
 
 ## Reference skills studied
 
@@ -51,12 +51,12 @@
 
 - Deterministic package validation: passed with 0 failures and 0 warnings.
 - Trigger eval: passed 23/23, with 0 false positives and 0 false negatives.
-- Full unit suite: passed 36/36, including 11 publisher-specific regressions after removing the legacy Profile interface.
+- Full unit suite: passed 38/38, including public commit identity and Windows command-shim regressions.
 - Pre-migration publisher dry-run against `joeseesun/qiaomu-meta-skill`: historical evidence only; it does not verify the renamed Starline package.
 - Independent `--prepare-only` fixture: passed; created MIT LICENSE and a product README using dynamic owner metadata.
-- Public v3.0.0 repository, merged PR and GitHub Release were verified; its final Windows clean-install gate exposed an environment-isolation bug fixed in v3.0.1.
+- Public v3.0.0 and v3.0.1 repositories, merged PRs and GitHub Releases were verified; their final Windows clean-install gates exposed command-shim and environment-isolation bugs fixed in v3.0.2.
 - Live dual-catalog smoke: passed in strict mode for `skill evaluation`; skills.sh and SkillsMP both completed, producing 9 merged candidate families with source metrics kept separate.
 - Local release audit: 4 pass, 3 warn, and 2 expected blocks. Package, version/report consistency, secret scan and unit tests pass; `git_diff_check` and `feature_branch` remain blocked because this installed Skill directory is not a Git worktree. Clean-install and provider/human output evidence remain missing.
-- PR, merged default-branch and GitHub Release proof for v3.0.0: passed. Public clean-install proof is rerun as a v3.0.1 release gate.
+- PR, merged default-branch and GitHub Release proof through v3.0.1: passed. Public clean-install and exact `Starline` commit identity are rerun as v3.0.2 release gates.
 - Provider-backed head-to-head output evaluation: `missing evidence`.
 - Human blind comparison of handoff persuasiveness: `missing evidence`.

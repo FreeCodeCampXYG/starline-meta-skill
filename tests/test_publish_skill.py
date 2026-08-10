@@ -38,6 +38,13 @@ class FakeRunner:
 
 
 class PublishSkillTest(unittest.TestCase):
+    def test_public_commit_identity_uses_owner_and_noreply_email(self) -> None:
+        self.assertEqual(
+            PUBLISH.commit_identity("Starline", "FreeCodeCampXYG"),
+            ("Starline", "FreeCodeCampXYG@users.noreply.github.com"),
+        )
+        self.assertEqual(PUBLISH.MERGE_STRATEGY, "--rebase")
+
     def test_windows_npx_cmd_is_resolved(self) -> None:
         with patch.object(PUBLISH.os, "name", "nt"), patch.object(
             PUBLISH.shutil, "which", side_effect=lambda name: "C:/node/npx.cmd" if name == "npx.cmd" else None

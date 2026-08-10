@@ -6,7 +6,9 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -40,7 +42,17 @@ def load_json(path: Path) -> dict[str, Any]:
     return payload
 
 
+def resolve_command(command: list[str]) -> list[str]:
+    """Resolve Windows command shims before invoking a subprocess."""
+    if os.name == "nt" and command and command[0] == "npx":
+        executable = shutil.which("npx.cmd") or shutil.which("npx")
+        if executable:
+            return [executable, *command[1:]]
+    return command
+
+
 def run(command: list[str], cwd: Path, timeout: float = 120.0, env: dict[str, str] | None = None) -> dict[str, Any]:
+    command = resolve_command(command)
     try:
         completed = subprocess.run(
             command,
@@ -233,8 +245,6 @@ def evaluate(root: Path, phase: str, run_tests: bool, install_check: bool) -> di
     if install_check and slug:
         with tempfile.TemporaryDirectory() as directory:
             temp_home = Path(directory)
-            import os
-
             env = dict(os.environ)
             env["HOME"] = str(temp_home)
             env["USERPROFILE"] = str(temp_home)

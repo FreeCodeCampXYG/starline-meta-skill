@@ -8,6 +8,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,6 +20,15 @@ SPEC.loader.exec_module(RELEASE)
 
 
 class ReleaseCheckTest(unittest.TestCase):
+    def test_windows_npx_cmd_is_resolved(self) -> None:
+        with patch.object(RELEASE.os, "name", "nt"), patch.object(
+            RELEASE.shutil, "which", side_effect=lambda name: "C:/node/npx.cmd" if name == "npx.cmd" else None
+        ):
+            self.assertEqual(
+                RELEASE.resolve_command(["npx", "--version"]),
+                ["C:/node/npx.cmd", "--version"],
+            )
+
     def test_secret_scan_reports_location_without_value(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
