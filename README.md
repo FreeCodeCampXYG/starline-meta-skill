@@ -44,7 +44,8 @@ Skill 正在变成 Agent 时代真正可复用的软件单元，但“写一份 
 
 Anthropic 与 OpenAI 的官方 `skill-creator` 奠定了很好的基础。Starline 元 Skill 在此之上补齐了我实际做几十个 Skill 时最需要的一段：**先搜索再创造、用证据控制质量，并把成品安全发布给别人使用。**
 
-初始方法来自搭档姚老师的 [`yaojingang/yao-meta-skill`](https://github.com/yaojingang/yao-meta-skill)。我继续研究并整合 Anthropic、OpenAI 等 Agent Skill 的公开最佳实践，随后加入 skills.sh、SkillsMP、GitHub 验源、Starline 轻量门禁与自包含发布能力。
+初始仓库来自乔木老师仓库，一下是乔木老师原文
+- 初始方法来自搭档姚老师的 [`yaojingang/yao-meta-skill`](https://github.com/yaojingang/yao-meta-skill)。我继续研究并整合 Anthropic、OpenAI 等 Agent Skill 的公开最佳实践，随后加入 skills.sh、SkillsMP、GitHub 验源、Starline 轻量门禁与自包含发布能力。
 
 ## 它比普通 Skill 创建器多做什么
 
