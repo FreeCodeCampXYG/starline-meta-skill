@@ -38,6 +38,17 @@ class FakeRunner:
 
 
 class PublishSkillTest(unittest.TestCase):
+    def test_transient_python_caches_are_removed_before_staging(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            cache = root / "scripts" / "__pycache__"
+            cache.mkdir(parents=True)
+            (cache / "demo.cpython-312.pyc").write_bytes(b"cache")
+            (root / "keep.py").write_text("print('ok')\n", encoding="utf-8")
+            PUBLISH.remove_transient_files(root)
+            self.assertFalse(cache.exists())
+            self.assertTrue((root / "keep.py").is_file())
+
     def test_public_commit_identity_uses_owner_and_noreply_email(self) -> None:
         self.assertEqual(
             PUBLISH.commit_identity("Starline", "FreeCodeCampXYG"),
@@ -54,7 +65,7 @@ class PublishSkillTest(unittest.TestCase):
                 ["C:/node/npx.cmd", "--version"],
             )
 
-    def test_identity_defaults_owner_to_starline(self) -> None:
+    def test_identity_defaults_owner_to_bilingual_starline_author(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             (root / "SKILL.md").write_text(
@@ -65,7 +76,7 @@ class PublishSkillTest(unittest.TestCase):
                 json.dumps({"name": "starline-demo", "version": "1.0.0"}),
                 encoding="utf-8",
             )
-            self.assertEqual(PUBLISH.identity(root)["owner"], "Starline")
+            self.assertEqual(PUBLISH.identity(root)["owner"], "墨点星痕 (starline)")
 
     def test_generated_readme_uses_dynamic_owner(self) -> None:
         text = PUBLISH.generated_readme(

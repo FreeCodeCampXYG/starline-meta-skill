@@ -2,9 +2,9 @@
 
 ## Result
 
-- Skill: `starline-meta-skill` 3.0.2
+- Skill: `starline-meta-skill` 3.0.3
 - Job: research, create, evaluate, package, govern, and safely publish reusable Starline skills through one self-contained workflow
-- Status: public v3.0.0 and v3.0.1 releases created; v3.0.2 enforces the Starline public commit identity and completes Windows-safe isolated installation verification
+- Status: public releases through v3.0.2 exist; local v3.0.3 defines the default bilingual author identity as 墨点星痕 (starline), while preserving explicit user author overrides
 
 ## Reference skills studied
 

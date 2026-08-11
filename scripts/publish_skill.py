@@ -120,7 +120,7 @@ def identity(root: Path) -> dict[str, str]:
     name = str(frontmatter.get("name", "")).strip()
     description = " ".join(str(frontmatter.get("description", "")).split())
     version = str(manifest.get("version", "")).strip()
-    owner = str(manifest.get("owner", "Starline")).strip() or "Starline"
+    owner = str(manifest.get("owner", "墨点星痕 (starline)")).strip() or "墨点星痕 (starline)"
     if not name or not description:
         raise PublishError("SKILL.md frontmatter requires name and description")
     if manifest.get("name") != name:
@@ -353,6 +353,17 @@ def copy_package(source: Path, destination: Path) -> None:
     shutil.copytree(source, destination, dirs_exist_ok=True, ignore=ignore)
 
 
+def remove_transient_files(root: Path) -> None:
+    """Remove test/runtime caches from the temporary publishing workspace."""
+    for directory in sorted(root.rglob("__pycache__"), key=lambda path: len(path.parts), reverse=True):
+        if ".git" not in directory.parts and directory.is_dir():
+            shutil.rmtree(directory)
+    for pattern in ("*.pyc", "*.pyo"):
+        for path in root.rglob(pattern):
+            if ".git" not in path.parts and path.is_file():
+                path.unlink()
+
+
 def staged_changes(root: Path, runner: Runner = run) -> bool:
     return not runner(["git", "diff", "--cached", "--quiet"], root, check=False).ok
 
@@ -501,6 +512,7 @@ def publish(args: argparse.Namespace, runner: Runner = run) -> dict[str, Any]:
     assert_feature_branch(branch, default)
 
     local_gates = release_check(workspace, "local", install=False)
+    remove_transient_files(workspace)
     secrets = RELEASE.scan_secrets(workspace)
     if secrets:
         raise PublishError(f"secret scan blocked publication: {secrets}")

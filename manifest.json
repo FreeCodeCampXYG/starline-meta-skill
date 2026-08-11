@@ -1,8 +1,9 @@
 {
   "name": "starline-meta-skill",
-  "version": "3.0.2",
-  "owner": "Starline",
-  "updated_at": "2026-08-04",
+  "version": "3.0.3",
+  "owner": "墨点星痕 (starline)",
+  "author": {"name": "墨点星痕", "english_name": "starline"},
+  "updated_at": "2026-08-12",
   "status": "active",
   "maturity_tier": "governed",
   "lifecycle_stage": "library",
@@ -18,7 +19,11 @@
   "starline_defaults": {
     "skill_name_prefix": "starline-",
     "max_preferred_hyphen_parts": 3,
-    "copyright": "Copyright (c) Starline"
+    "author_name": "墨点星痕",
+    "author_english_name": "starline",
+    "frontmatter_author": "墨点星痕 (starline)",
+    "allow_user_author_override": true,
+    "copyright": "Copyright (c) 墨点星痕 (starline)"
   },
   "naming": {
     "default_prefix": "starline-",
