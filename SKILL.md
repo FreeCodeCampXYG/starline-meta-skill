@@ -3,12 +3,15 @@ name: starline-meta-skill
 description: |
   Research, create, improve, migrate, evaluate, package, install-check, govern, and safely publish Starline-authored agent skills from workflows, prompts, transcripts, docs, SOPs, runbooks, scripts, or notes. Use for new or existing skills, configurable naming and ownership, prior-art synthesis, routing/trigger boundaries, trigger or output evals, Skill IR, release gates, README preparation, GitHub repository and pull-request publication, versioned Releases, clean npx installation, team reuse, and create-and-publish flows. The publication path is self-contained and forbids direct default-branch pushes. Exclude one-off summaries, translations, ordinary docs, non-skill package publishing, and tasks that explicitly should not become a skill.
 metadata:
-  author: Starline
-  version: "3.0.2"
+  author: "墨点星痕 (starline)"
+  version: "3.0.3"
   upstream_inspiration: yaojingang/yao-meta-skill; joeseesun/qiaomu-skill-publisher
 ---
 
 # Starline Meta Skill
+
+作者：墨点星痕
+英文名：starline
 
 Build reusable Starline-authored skill packages, not long prompts.
 
@@ -23,7 +26,7 @@ Build reusable Starline-authored skill packages, not long prompts.
 - Do not turn one-off summaries, translations, explanations, or brainstorming into skills.
 - Match the user's action: create/refactor/package requests may edit; audit/evaluate/diagnose-only requests remain read-only; publish only when explicitly requested.
 - Read the naming policy from `manifest.json`. Default new skills to the `starline-` prefix with no more than three preferred hyphen parts. If the user supplies another prefix or explicitly requests no prefix, use that choice. Preserve an existing skill name during updates unless the user explicitly requests migration.
-- Default new package ownership and copyright to `Starline`. Add personal profile links or assets only when the owner explicitly supplies them.
+- Default new package author metadata to Chinese name `墨点星痕` and English name `starline`. Write frontmatter author as `墨点星痕 (starline)`, and keep README, manifest owner/author, interface, handoff and copyright consistent. A user-supplied author explicitly overrides this default. Add personal profile links or assets only when the owner explicitly supplies them.
 
 ## Modes
 
@@ -144,6 +147,7 @@ Detailed CLI and safety decisions: [Self-Contained Skill Publishing](references/
 ## Starline Defaults
 
 - Prefer practical, concise, publishable Chinese output.
+- Default author identity: `作者：墨点星痕` and `英文名：starline`; frontmatter uses `author: "墨点星痕 (starline)"`. Keep all package surfaces aligned, unless the user explicitly names another author.
 - Default new package names to `starline-`; treat the prefix as user-configurable rather than hardcoded.
 - Keep one creator authority and one root skill entrypoint.
 - Preserve platform-neutral source plus minimal adapters.

@@ -1,8 +1,10 @@
 # starline-meta-skill
 
+作者：**墨点星痕**｜英文名：**starline**
+
 > 把一句「把这个流程做成 Skill」，变成一个真正能被发现、能稳定触发、能通过验证、还能一键开源的 Skill。
 
-当前公开仓库为 [`FreeCodeCampXYG/starline-meta-skill`](https://github.com/FreeCodeCampXYG/starline-meta-skill)。`v3.0.2` 统一使用 `Starline` 和 GitHub noreply 邮箱提交，并补齐 Windows 发布与隔离安装验证。
+当前公开仓库为 [`FreeCodeCampXYG/starline-meta-skill`](https://github.com/FreeCodeCampXYG/starline-meta-skill)。`v3.0.3` 将新 Skill 默认作者统一为“墨点星痕（starline）”，并要求 frontmatter、README、manifest、接口与交接报告保持一致；用户明确指定其他作者时可覆盖。
 
 安装以后，你只需要把提示词、SOP、聊天记录、旧 Skill、脚本或一个模糊想法交给 Agent：
 
@@ -21,6 +23,14 @@
 - 可以在需求中指定其他前缀，或明确要求不使用前缀。
 - 更新已有 skill 时默认保留原名；只有明确要求迁移时才重命名目录、frontmatter、manifest、接口和报告。
 - 默认策略保存在 `manifest.json` 的 `naming` 字段中，可继续自定义。
+
+### 作者规范
+
+- 默认中文作者名：`墨点星痕`。
+- 默认英文名：`starline`。
+- `SKILL.md` frontmatter 默认写为 `author: "墨点星痕 (starline)"`。
+- README、manifest、interface 和 creation handoff 必须使用同一作者身份。
+- 用户明确指定其他作者时，以用户选择为准，不强制覆盖。
 
 ## 为什么我做了这个
 

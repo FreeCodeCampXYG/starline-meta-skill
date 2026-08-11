@@ -1,10 +1,10 @@
 {
   "schema_version": "2.0.0-starline-lite",
-  "generated_at": "2026-08-11",
+  "generated_at": "2026-08-12",
   "package": {
     "name": "starline-meta-skill",
-    "version": "3.0.2",
-    "owner": "Starline",
+    "version": "3.0.3",
+    "owner": "墨点星痕 (starline)",
     "maturity_tier": "governed",
     "lifecycle_stage": "library",
     "upstream_inspiration": "https://github.com/yaojingang/yao-meta-skill; https://github.com/joeseesun/qiaomu-skill-publisher",
@@ -27,7 +27,11 @@
     "starline_defaults": {
       "skill_name_prefix": "starline-",
       "max_preferred_hyphen_parts": 3,
-      "copyright": "Copyright (c) Starline"
+      "author_name": "墨点星痕",
+      "author_english_name": "starline",
+      "frontmatter_author": "墨点星痕 (starline)",
+      "allow_user_author_override": true,
+      "copyright": "Copyright (c) 墨点星痕 (starline)"
     },
     "naming": {
       "default_prefix": "starline-",
@@ -80,7 +84,7 @@
       "Do not turn one-off summaries, translations, explanations, or brainstorming into skills.",
       "Match the user's action: create/refactor/package requests may edit; audit/evaluate/diagnose-only requests remain read-only; publish only when explicitly requested.",
       "Read the naming policy from `manifest.json`. Default new skills to the `starline-` prefix with no more than three preferred hyphen parts. If the user supplies another prefix or explicitly requests no prefix, use that choice. Preserve an existing skill name during updates unless the user explicitly requests migration.",
-      "Default new package ownership and copyright to `Starline`. Add personal profile links or assets only when the owner explicitly supplies them."
+      "Default new package author metadata to Chinese name `墨点星痕` and English name `starline`. Write frontmatter author as `墨点星痕 (starline)`, and keep README, manifest owner/author, interface, handoff and copyright consistent. A user-supplied author explicitly overrides this default. Add personal profile links or assets only when the owner explicitly supplies them."
     ],
     "compact_workflow": [
       "Decide whether the request deserves a reusable skill; otherwise answer directly and create no package.",
@@ -155,7 +159,8 @@
       "reports\\skill-ir.json",
       "reports\\skillsmp-integration-2026-08-03.md",
       "reports\\trigger-eval.json",
-      "reports\\upstream-sync-2026-07-31.md"
+      "reports\\upstream-sync-2026-07-31.md",
+      "reports\\v3.0.3-author-policy.md"
     ]
   },
   "portability": {
