@@ -1,9 +1,9 @@
 {
   "name": "starline-meta-skill",
-  "version": "3.0.3",
+  "version": "3.0.5",
   "owner": "墨点星痕 (starline)",
   "author": {"name": "墨点星痕", "english_name": "starline"},
-  "updated_at": "2026-08-12",
+  "updated_at": "2026-08-14",
   "status": "active",
   "maturity_tier": "governed",
   "lifecycle_stage": "library",
@@ -88,6 +88,7 @@
     "github_release_creation",
     "npx_discovery_and_clean_install",
     "non_destructive_local_sync",
-    "codex_skill_history_catalog"
+    "codex_skill_history_catalog",
+    "powershell_utf8_guard"
   ]
 }

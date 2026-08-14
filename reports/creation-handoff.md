@@ -2,9 +2,9 @@
 
 ## Result
 
-- Skill: `starline-meta-skill` 3.0.3
+- Skill: `starline-meta-skill` 3.0.5
 - Job: research, create, evaluate, package, govern, and safely publish reusable Starline skills through one self-contained workflow
-- Status: public releases through v3.0.2 exist; local v3.0.3 defines the default bilingual author identity as 墨点星痕 (starline), while preserving explicit user author overrides
+- Status: public releases through v3.0.2 exist; local v3.0.5 defines the default bilingual author identity as 墨点星痕 (starline), adds the PowerShell console/file encoding guard, and preserves explicit user author overrides
 
 ## Reference skills studied
 
@@ -31,7 +31,7 @@
 - `keep`: platform-neutral intent, trigger/output evaluation, evidence-bound claims, release gates, publisher README/License preparation and install verification.
 - `adapt`: compress a large Skill OS into a lighter Chinese-first Starline workflow and route every publication through review.
 - `reject`: copying upstream dashboards; multiple creator/discovery/publisher skills; popularity-only ranking; direct default-branch push; destructive local replacement; same-version rerelease; unsupported completion claims.
-- `invent`: resilient dual-catalog research, safe self-contained publisher, feature-branch-only new-repository bootstrap, PR state gate, release immutability, structured publication evidence and rollback-preserving local sync.
+- `invent`: resilient dual-catalog research, safe self-contained publisher, feature-branch-only new-repository bootstrap, PR state gate, release immutability, structured publication evidence, rollback-preserving local sync, and a Windows PowerShell encoding guard that separates GBK console rendering from UTF-8 file I/O.
 
 ## Advantages and highlights
 

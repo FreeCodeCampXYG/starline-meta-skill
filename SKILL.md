@@ -4,7 +4,7 @@ description: |
   Research, create, improve, migrate, evaluate, package, install-check, govern, and safely publish Starline-authored agent skills from workflows, prompts, transcripts, docs, SOPs, runbooks, scripts, or notes. Use for new or existing skills, configurable naming and ownership, prior-art synthesis, routing/trigger boundaries, trigger or output evals, Skill IR, release gates, README preparation, GitHub repository and pull-request publication, versioned Releases, clean npx installation, team reuse, and create-and-publish flows. The publication path is self-contained and forbids direct default-branch pushes. Exclude one-off summaries, translations, ordinary docs, non-skill package publishing, and tasks that explicitly should not become a skill.
 metadata:
   author: "墨点星痕 (starline)"
-  version: "3.0.3"
+  version: "3.0.5"
   upstream_inspiration: yaojingang/yao-meta-skill; joeseesun/qiaomu-skill-publisher
 ---
 
@@ -92,13 +92,14 @@ Prefer intent fidelity, source fidelity, and decision rules over an expanding to
 4. Pass the generalization gate for sample-driven core changes.
 5. Choose the lightest valid mode.
 6. Write the `description` early; run `evals/trigger_cases.json` before expanding structure.
-7. Create only earned resources. Never create ceremonial directories or duplicate README/SKILL prose.
-8. Export `reports/skill-ir.json` for Production+, public, or cross-platform packages.
-9. Add output evals when correctness, safety, persuasion, or repeatability cannot be shown by trigger tests alone.
-10. Keep mutations within the requested action boundary and preserve rollback for risky changes.
-11. Validate package, unit tests, trigger behavior, context budget, secret/trust boundaries, and evidence claims.
-12. Produce the creation handoff and clearly label missing evidence.
-13. When publication is requested, read [Self-Contained Skill Publishing](references/publishing.md), then use the bundled publisher for feature branch → validation → PR → merge → release/install verification; never push directly to the default branch.
+7. Keep console encoding and file encoding separate on Windows. PowerShell console display may need the local GBK code page for readable Chinese output, but file reads/writes for Chinese, Markdown, YAML, JSON, and other encoding-sensitive sources must explicitly use UTF-8 (`Get-Content -Encoding UTF8`, `Set-Content -Encoding UTF8`, `Out-File -Encoding UTF8`, `apply_patch`, or a UTF-8-aware tool). Do not copy mojibake from terminal output back into source files; verify suspicious text by reading bytes or using Python `read_text(encoding="utf-8")`.
+8. Create only earned resources. Never create ceremonial directories or duplicate README/SKILL prose.
+9. Export `reports/skill-ir.json` for Production+, public, or cross-platform packages.
+10. Add output evals when correctness, safety, persuasion, or repeatability cannot be shown by trigger tests alone.
+11. Keep mutations within the requested action boundary and preserve rollback for risky changes.
+12. Validate package, unit tests, trigger behavior, context budget, secret/trust boundaries, and evidence claims.
+13. Produce the creation handoff and clearly label missing evidence.
+14. When publication is requested, read [Self-Contained Skill Publishing](references/publishing.md), then use the bundled publisher for feature branch → validation → PR → merge → release/install verification; never push directly to the default branch.
 
 Core commands:
 
@@ -147,6 +148,7 @@ Detailed CLI and safety decisions: [Self-Contained Skill Publishing](references/
 ## Starline Defaults
 
 - Prefer practical, concise, publishable Chinese output.
+- Treat encoding as a release-quality concern. On Windows, allow console output to use GBK when that is what renders Chinese correctly, but keep source files UTF-8 and make PowerShell file I/O explicit. Verify stored file content, not only terminal rendering.
 - Default author identity: `作者：墨点星痕` and `英文名：starline`; frontmatter uses `author: "墨点星痕 (starline)"`. Keep all package surfaces aligned, unless the user explicitly names another author.
 - Default new package names to `starline-`; treat the prefix as user-configurable rather than hardcoded.
 - Keep one creator authority and one root skill entrypoint.
